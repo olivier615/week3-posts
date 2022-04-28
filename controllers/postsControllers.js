@@ -30,10 +30,10 @@ exports.deleteAllPosts = async (req, res) => {
 exports.deletePost = async (req, res) => {
   const id = req.params.id
   const result = await Post.findByIdAndRemove(id)
-  if (result) {
-    successHandel(res)
-  } else {
+  if (!result) {
     errorHandel(res)
+  } else {
+    successHandel(res)
   }
 }
 
